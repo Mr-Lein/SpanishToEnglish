@@ -12,5 +12,27 @@ public class SpanRunner
 {
 	public static void main( String args[] ) throws IOException
 	{
+		Scanner file = new Scanner(new File("spantoeng.dat"));
+
+		SpanishToEnglish test = new SpanishToEnglish();
+
+		int num = file.nextInt();
+		file.nextLine();
+		for(int i = 0; i < num; i++)
+		{
+			test.putEntry(file.nextLine());
+		}
+
+		out.println("\n====\tMAP CONTENTS\t====\n\n");
+		out.println(test+"\n\n");
+
+
+		out.println("\n====\tREAD LINES\t====\n\n");
+		while(file.hasNext())
+		{
+			String sent = file.nextLine();
+			out.println(test.translate(sent));
+		}
+
 	}
 }
